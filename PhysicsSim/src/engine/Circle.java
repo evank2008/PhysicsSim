@@ -6,6 +6,7 @@ import java.awt.Graphics;
 public class Circle extends PhysicsObject{
 
 	private int radius=25;
+	double restitution=0.05;
 	public Circle() {
 		super();
 		setPosition(400,100);
@@ -25,13 +26,13 @@ public class Circle extends PhysicsObject{
 		//bounce check
 		if(getY()+2*radius>PhysicsSim.HEIGHT&&getVelocityY()>0) {
 			//28 is the height of the window header
-			this.setVelocityY(0-getVelocityY());
+			this.setVelocityY(0-getVelocityY()*(1-restitution));
 		}  if(getY()<0&&getVelocityY()<0) {
-			this.setVelocityY(0-getVelocityY());
+			this.setVelocityY(0-getVelocityY()*(1-restitution));
 		}  if(getX()+2*radius>PhysicsSim.WIDTH&&getVelocityX()>0) {
-			this.setVelocityX(0-getVelocityX());
+			this.setVelocityX(0-getVelocityX()*(1-restitution));
 		}  if(getX()<0&&getVelocityX()<0) {
-			this.setVelocityX(0-getVelocityX());
+			this.setVelocityX(0-getVelocityX()*(1-restitution));
 		}
 	}
 
