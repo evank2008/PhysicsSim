@@ -18,7 +18,7 @@ boolean started = false;
 			}
 		});
 		 addMouseListener(this);
-		new Circle();
+		new Circle(25);
 	}
 	@Override
 	public void paintComponent(Graphics g) {
@@ -34,7 +34,10 @@ boolean started = false;
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		if(!started) {
 		start();
+		started=true;
+		}
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {

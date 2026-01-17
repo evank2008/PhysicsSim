@@ -2,32 +2,26 @@ package engine;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
 
-public abstract class PhysicsObject {
+public abstract class PhysicsObject extends Area{
 
-	private Point position;
+
 	private double velocityX, velocityY;
 	
-	public PhysicsObject() {
+	public PhysicsObject(Shape s) {
+		super(s);
+		
 		PhysicsSim.objects.add(this);
 	}
 	void tick() {
 		velocityY+=PhysicsSim.gravity;
 		
-		position.translate((int)velocityX, (int)velocityY);
+		transform(AffineTransform.getTranslateInstance(velocityX, velocityY));
 	}
-	public Point getPosition() {
-		return position;
-	}
-	public void setPosition(int x, int y) {
-		position=new Point(x,y);
-	}
-	public int getX() {
-		return position.x;
-	}
-	public int getY() {
-		return position.y;
-	}
+
 	public double getVelocityX() {
 		return velocityX;
 	}
