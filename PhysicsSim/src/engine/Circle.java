@@ -11,7 +11,7 @@ public class Circle extends PhysicsObject{
 	double restitution=0.05;
 	public Circle(int r) {
 		super(new Ellipse2D.Double(0,0,r*2,r*2));
-		getBounds().setLocation(400,100);
+		setPosition(400,100);
 		setVelocity(5, 0);
 	}
 	@Override

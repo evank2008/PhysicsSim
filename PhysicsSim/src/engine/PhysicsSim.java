@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 public class PhysicsSim {
 	public static int WIDTH=800,HEIGHT=600;
 	public static ArrayList<PhysicsObject> objects;
+	public static ArrayList<Wall> walls;
 	public static double 
 	gravity=0.2,
 	ticksPerSecond=60
@@ -21,6 +22,7 @@ public class PhysicsSim {
 	}
 	void run() {
 		objects = new ArrayList<PhysicsObject>();
+		walls = new ArrayList<Wall>();
 		display = new Display();
 		display.setBackground(new Color(200,120,150));
 		

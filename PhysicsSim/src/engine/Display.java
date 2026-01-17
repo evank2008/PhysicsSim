@@ -23,6 +23,9 @@ boolean started = false;
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		for(Wall w: PhysicsSim.walls) {
+			w.draw(g);
+		}
 		for(PhysicsObject o: PhysicsSim.objects) {
 			o.draw(g);
 		}
