@@ -8,6 +8,9 @@ public abstract class PhysicsObject {
 	private Point position;
 	private double velocityX, velocityY;
 	
+	public PhysicsObject() {
+		PhysicsSim.objects.add(this);
+	}
 	void tick() {
 		velocityY+=PhysicsSim.gravity;
 		
@@ -31,16 +34,17 @@ public abstract class PhysicsObject {
 	public double getVelocityY() {
 		return velocityY;
 	}
-	public void setVelocity(int x, int y) {
+	public void setVelocity(double x, double y) {
 		velocityX=x;
 		velocityY=y;
 	}
-	public void setVelocityX(int v) {
+	public void setVelocityX(double v) {
 		velocityX=v;
 	}
-	public void setVelocityY(int v) {
+	public void setVelocityY(double v) {
 		velocityY=v;
 	}
 	abstract void draw(Graphics g);
+	
 }
 

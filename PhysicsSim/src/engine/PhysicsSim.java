@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class PhysicsSim {
-	public static final int WIDTH=800,HEIGHT=600;
+	public static int WIDTH=800,HEIGHT=600;
 	public static ArrayList<PhysicsObject> objects;
-	public static int 
-	gravity=0,
+	public static double 
+	gravity=0.2,
 	ticksPerSecond=60
 	;
 	
@@ -20,6 +20,7 @@ public class PhysicsSim {
 		new PhysicsSim().run();
 	}
 	void run() {
+		objects = new ArrayList<PhysicsObject>();
 		display = new Display();
 		display.setBackground(new Color(200,120,150));
 		
@@ -28,8 +29,9 @@ public class PhysicsSim {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(display);
 		frame.setVisible(true);
+		HEIGHT-=frame.getInsets().top;
 		
-		objects = new ArrayList<PhysicsObject>();
+		
 	}
 
 }
