@@ -10,8 +10,9 @@ public class PhysicsSim {
 	public static ArrayList<PhysicsObject> objects;
 	public static ArrayList<Wall> walls;
 	public static double 
-	gravity=0.2,
-	ticksPerSecond=60
+	gravity=800, //acceleration in a second
+	ticksPerSecond=120,
+	drawsPerSecond=120
 	;
 	
 	Display display;
@@ -31,7 +32,8 @@ public class PhysicsSim {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(display);
 		frame.setVisible(true);
-		HEIGHT-=frame.getInsets().top;
+		HEIGHT-=(frame.getInsets().top+frame.getInsets().bottom);
+		//System.out.println(frame.getInsets().top);
 		
 		
 	}

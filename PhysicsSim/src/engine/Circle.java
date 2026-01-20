@@ -3,6 +3,7 @@ package engine;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 
 public class Circle extends PhysicsObject{
@@ -11,7 +12,7 @@ public class Circle extends PhysicsObject{
 	double restitution=0.05;
 	public Circle(int r) {
 		super(new Ellipse2D.Double(0,0,r*2,r*2));
-		setPosition(400,100);
+		setPosition(0,0);
 		setVelocity(5, 0);
 	}
 	@Override
@@ -27,14 +28,15 @@ public class Circle extends PhysicsObject{
 	void tick() {
 		super.tick();
 		//bounce check
-		if(getBounds().getY()+2*radius>PhysicsSim.HEIGHT&&getVelocityY()>0) {
-			//28 is the height of the window header
+		Rectangle predictedPos = getBounds();
+		predictedPos.translate((int)(getVelocityX()/PhysicsSim.ticksPerSecond), (int)((getVelocityY()+PhysicsSim.gravity/PhysicsSim.ticksPerSecond)/PhysicsSim.ticksPerSecond));
+		if(predictedPos.getY()>PhysicsSim.HEIGHT-2*radius&&getVelocityY()>0) {
 			this.setVelocityY(0-getVelocityY()*(1-restitution));
-		}  if(getBounds().getY()<0&&getVelocityY()<0) {
+		}  if(predictedPos.getY()<0&&getVelocityY()<0) {
 			this.setVelocityY(0-getVelocityY()*(1-restitution));
-		}  if(getBounds().getX()+2*radius>PhysicsSim.WIDTH&&getVelocityX()>0) {
+		}  if(predictedPos.getX()+2*radius>PhysicsSim.WIDTH&&getVelocityX()>0) {
 			this.setVelocityX(0-getVelocityX()*(1-restitution));
-		}  if(getBounds().getX()<0&&getVelocityX()<0) {
+		}  if(predictedPos.getX()<0&&getVelocityX()<0) {
 			this.setVelocityX(0-getVelocityX()*(1-restitution));
 		}
 	}

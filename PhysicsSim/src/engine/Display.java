@@ -7,15 +7,17 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 public class Display extends JPanel implements MouseListener{
-Timer timer;
+Timer tickTimer, drawTimer;
 boolean started = false;
 	public Display() {
 		super();
-		 timer = new Timer((int) (1000/PhysicsSim.ticksPerSecond),(e)->{
-			this.repaint();
+		tickTimer = new Timer((int) (1000/PhysicsSim.ticksPerSecond),(e)->{
 			for(PhysicsObject o: PhysicsSim.objects) {
 				o.tick();
 			}
+		});
+		drawTimer = new Timer((int) (1000/PhysicsSim.drawsPerSecond),(e)->{
+			this.repaint();
 		});
 		 addMouseListener(this);
 		new Circle(25);
@@ -32,7 +34,8 @@ boolean started = false;
 
 	}
 	public void start() {
-		timer.start();
+		tickTimer.start();
+		drawTimer.start();
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -40,7 +43,8 @@ boolean started = false;
 		if(!started) {
 		start();
 		started=true;
-		}
+		
+		} else PhysicsSim.objects.get(0).setPosition(0, 0);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {

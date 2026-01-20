@@ -17,8 +17,9 @@ public abstract class PhysicsObject extends Area{
 		PhysicsSim.objects.add(this);
 	}
 	void tick() {
-		velocityY+=PhysicsSim.gravity;
-		translate(velocityX,velocityY);
+		//assume 120 tps
+		velocityY+=PhysicsSim.gravity/120;
+		translate(velocityX/120,velocityY/120);
 	}
 
 	public void translate(double dx, double dy) {
@@ -27,6 +28,18 @@ public abstract class PhysicsObject extends Area{
 	public void setPosition(double x, double y) {
 		double dx = x - getBounds().getX();
 		double dy = y - getBounds().getY();
+
+		transform(AffineTransform.getTranslateInstance(dx, dy));
+	}
+	public void setX(double x) {
+		double dx = x - getBounds().getX();
+		double dy = 0;
+
+		transform(AffineTransform.getTranslateInstance(dx, dy));
+	}
+	public void setY(double y) {
+		double dx = 0;
+		double dy = y - getBounds().getX();
 
 		transform(AffineTransform.getTranslateInstance(dx, dy));
 	}
