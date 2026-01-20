@@ -23,8 +23,9 @@ boolean started = false;
 		new Circle(25);
 	}
 	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	public void paintComponent(Graphics gg) {
+		super.paintComponent(gg);
+		Graphics2D g = (Graphics2D) gg;
 		for(Wall w: PhysicsSim.walls) {
 			w.draw(g);
 		}

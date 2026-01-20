@@ -17,8 +17,7 @@ public class Circle extends PhysicsObject{
 		radius=r;
 	}
 	@Override
-	void draw(Graphics gg) {
-		Graphics2D g = (Graphics2D)gg;
+	void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.white);
 		g.fill(this);

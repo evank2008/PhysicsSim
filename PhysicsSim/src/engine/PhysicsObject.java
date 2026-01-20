@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -59,7 +60,7 @@ public abstract class PhysicsObject extends Area{
 	public void setVelocityY(double v) {
 		velocityY=v;
 	}
-	abstract void draw(Graphics g);
+	abstract void draw(Graphics2D g);
 	
 }
 
