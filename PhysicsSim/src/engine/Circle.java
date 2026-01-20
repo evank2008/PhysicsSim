@@ -14,6 +14,7 @@ public class Circle extends PhysicsObject{
 		super(new Ellipse2D.Double(0,0,r*2,r*2));
 		setPosition(0,0);
 		setVelocity(5, 0);
+		radius=r;
 	}
 	@Override
 	void draw(Graphics gg) {

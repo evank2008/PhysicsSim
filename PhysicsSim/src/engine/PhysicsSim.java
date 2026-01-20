@@ -10,8 +10,8 @@ public class PhysicsSim {
 	public static ArrayList<PhysicsObject> objects;
 	public static ArrayList<Wall> walls;
 	public static double 
-	gravity=800, //acceleration in a second
-	ticksPerSecond=120,
+	gravity=4000, //acceleration in a second
+	ticksPerSecond=120, //increasing this should make everything faster
 	drawsPerSecond=120
 	;
 	
